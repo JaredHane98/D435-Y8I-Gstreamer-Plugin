@@ -12,7 +12,7 @@ The following repository provides support for Y8I format for GStreamer. The libr
 ## How to use
 
 - With a D435 camera plugged in find the correct file handle
-- EG: v4l2-ctl -d /dev/video2 --list-formats-ext
+- EG: v4l2-ctl -d /dev/video2 --list-formats-ext \n
       Index       : 0
       Type        : Video Capture
       Pixel Format: 'GREY'
