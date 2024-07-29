@@ -6,9 +6,7 @@ The following repository provides support for Y8I format for GStreamer. The libr
 
 ## How to build
 
-- clone the repository
-- cd into the plugin directory
-- cmake ./ -DLIBRARY_DEST:PATH= **WHERE GSTREAMER LIBRARIES ARE LOCATED**
+- cmake ./ -DLIBRARY_DEST:PATH=**GSTREAMER LIBRARY DESTINATION**
 - sudo make install
 
 ## How to use
