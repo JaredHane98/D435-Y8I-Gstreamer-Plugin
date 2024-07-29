@@ -10,15 +10,7 @@ The following repository provides support for Y8I format for GStreamer. The libr
 
 ## How to use
 
-- With a D435 camera plugged in find the correct file handle
-- EG: v4l2-ctl -d /dev/video2 --list-formats-ext
-      Index       : 0
-      Type        : Video Capture
-      Pixel Format: 'GREY'
-      Name        : 8-bit Greyscale
-
-- Then create a pipeline using the provided parameters in gst-launch-1.0
-
+- launch the plugin with the correct device
 - gst-launch-1.0 v4l2src device=/dev/video2 ! video/x-raw, format=GRAY8, width=1280, height=720, interlace-mode=progressive, framerate=30/1 ! rsdeinterlace ! videoconvert ! video/x-raw, format=I420 ! autovideosink
 
 Future plans
