@@ -1,7 +1,7 @@
 # D435-Y8I-Gstreamer-Plugin
 
 
-The following repository provides support for Y8I format for GStreamer. The library does not attempt to provide official support for Y8I. The plugin overrides the format prior to PLAYING and deinterlaces Y8I into GRAY8.
+The following repository provides support for Y8I format for GStreamer. The library does not attempt to provide official support for Y8I. The plugin overrides gstv4l2src format prior to starting. 
 
 
 ## How to build
