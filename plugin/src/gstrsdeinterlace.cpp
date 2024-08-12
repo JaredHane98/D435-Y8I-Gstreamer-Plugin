@@ -22,16 +22,6 @@ GST_DEBUG_CATEGORY_STATIC (CAT_PERFORMANCE);
 #define BINARY_PACKAGE "Plugin to add support for Y8I format on D435 Camera"
 #define URL "NONE"
 
-
-
-
-
-
-
-
-
-
-
 static GstCaps *gst_rsdeinterlace_transform_caps (GstBaseTransform * trans, GstPadDirection direction, GstCaps * caps, GstCaps * filter);
 
 static GstCaps *gst_rsdeinterlace_fixate_caps (GstBaseTransform * base, GstPadDirection direction, GstCaps * caps, GstCaps * othercaps);
@@ -41,9 +31,6 @@ static gboolean gst_rsdeinterlace_src_event (GstBaseTransform * trans, GstEvent 
 static gboolean gst_rsdeinterlace_set_info (GstVideoFilter * filter, GstCaps * in, GstVideoInfo * in_info, GstCaps * out, GstVideoInfo * out_info);
 
 static GstFlowReturn gst_rsdeinterlace_transform_frame (GstVideoFilter * filter, GstVideoFrame * in_frame, GstVideoFrame * out_frame);
-
-
-
 
 #define gst_rsdeinterlace_parent_class parent_class
 G_DEFINE_TYPE (GstRsDeinterlace, gst_rsdeinterlace, GST_TYPE_VIDEO_FILTER);
@@ -78,17 +65,11 @@ static void gst_rsdeinterlace_class_init(GstRsDeinterlaceClass* klass)
 
 }
 
-
 static void gst_rsdeinterlace_init (GstRsDeinterlace * rsdeinterlace)
 {
     /*nothing really to do here*/
     rsdeinterlace->v4l2src = NULL;
 }
-
-
-
-#define DEBUG_DEINTERLACE 0 
-
 
 static GstElement* gst_find_v4l2_element(GstBin* bin)
 {
@@ -132,8 +113,6 @@ static void gst_v4l2_setup_callbacks(GstRsDeinterlace* rsdeinterlace, GstElement
         rsdeinterlace->v4l2src = v4l2_element;
 }
 
-
-
 static GstCaps *gst_rsdeinterlace_transform_caps (GstBaseTransform * trans, GstPadDirection direction, GstCaps * caps, GstCaps * filter)
 {
     GstCaps *ret;
@@ -142,8 +121,7 @@ static GstCaps *gst_rsdeinterlace_transform_caps (GstBaseTransform * trans, GstP
     gint i, n;
 
     GstRsDeinterlace * rsdeinterlace = GST_RSDEINTERLACE(trans);
-
-
+    
     if(!rsdeinterlace->v4l2src)
     {
         GstElement* parent = GST_ELEMENT_PARENT(GST_ELEMENT(trans));
@@ -196,8 +174,6 @@ static gboolean gst_rsdeinterlace_src_event (GstBaseTransform * trans, GstEvent 
     return ret;
 }
 
-
-
 static GstCaps *gst_rsdeinterlace_fixate_caps (GstBaseTransform * base, GstPadDirection direction, GstCaps * caps, GstCaps * othercaps)
 {
     GstStructure *ins, *outs;
@@ -246,12 +222,10 @@ static GstCaps *gst_rsdeinterlace_fixate_caps (GstBaseTransform * base, GstPadDi
         goto done;
     }
 
-
 done:
     GST_DEBUG_OBJECT (base, "fixated othercaps to %" GST_PTR_FORMAT, othercaps);
     return othercaps;
 }
-
 
 static gboolean update_v4l2_format(GstRsDeinterlace * rsdeinterlace, const gint width, const gint height)
 {
@@ -273,7 +247,6 @@ static gboolean update_v4l2_format(GstRsDeinterlace * rsdeinterlace, const gint 
     }
     return FALSE;
 }
-
 
 static gboolean gst_rsdeinterlace_set_info (GstVideoFilter * filter, GstCaps * in, GstVideoInfo * in_info, GstCaps * out, GstVideoInfo * out_info)
 {
@@ -299,7 +272,6 @@ static gboolean gst_rsdeinterlace_set_info (GstVideoFilter * filter, GstCaps * i
     }
 }
 
-
 static GstFlowReturn gst_rsdeinterlace_transform_frame (GstVideoFilter * filter, GstVideoFrame * in_frame, GstVideoFrame * out_frame)
 {
     guint8 *input_image_data = (guint8*)GST_VIDEO_FRAME_PLANE_DATA(in_frame, 0);
@@ -321,7 +293,6 @@ static GstFlowReturn gst_rsdeinterlace_transform_frame (GstVideoFilter * filter,
 }
 
 
-
 static gboolean rsdeinterlace_plugin_init (GstPlugin * plugin)
 {
     GST_DEBUG_CATEGORY_INIT (gst_rsdeinterlace_debug, "rsdeinterlace", 0, "rsdeinterlace plugin");
@@ -330,7 +301,6 @@ static gboolean rsdeinterlace_plugin_init (GstPlugin * plugin)
 
     return gst_element_register (plugin, "rsdeinterlace", GST_RANK_PRIMARY, GST_TYPE_RSDEINTERLACE);
 }
-
 
 GST_PLUGIN_DEFINE (GST_VERSION_MAJOR,
     GST_VERSION_MINOR,
