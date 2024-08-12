@@ -5,9 +5,7 @@
 #include <gst/video/video.h>
 #include <gst/video/gstvideofilter.h>
 
-
 G_BEGIN_DECLS
-
 
 #define GST_TYPE_RSDEINTERLACE (gst_rsdeinterlace_get_type())
 
@@ -27,8 +25,6 @@ typedef struct _GstRsDeinterlaceClass GstRsDeinterlaceClass;
 typedef struct _V4L2FormatInterface V4L2FormatInterface;
 
 
-
-
 struct _V4L2FormatInterface
 {
     GstElement *v4l2src = NULL;
@@ -39,7 +35,6 @@ struct _GstRsDeinterlace
     GstVideoFilter element;
     GstElement *v4l2src;
 };
-
 
 struct _GstRsDeinterlaceClass
 {
